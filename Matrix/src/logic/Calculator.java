@@ -11,6 +11,12 @@ package logic;
  */
 public class Calculator {
 
+    /**
+     * 
+     * @param matrix1
+     * @param matrix2
+     * @return 
+     */
     public Matrix addMatrix(Matrix matrix1, Matrix matrix2) {
         if (matrix1.getRow() != matrix2.getRow()
                 || matrix1.getCol() != matrix2.getCol()) {
@@ -27,6 +33,12 @@ public class Calculator {
         return matrix3;
     }
 
+    /**
+     * 
+     * @param matrix1
+     * @param matrix2
+     * @return 
+     */
     public Matrix subMatrix(Matrix matrix1, Matrix matrix2) {
         if (matrix1.getRow() != matrix2.getRow()
                 || matrix1.getCol() != matrix2.getCol()) {
@@ -43,6 +55,12 @@ public class Calculator {
         return matrix3;
     }
 
+    /**
+     * 
+     * @param matrix1
+     * @param matrix2
+     * @return 
+     */
     public Matrix multiMatrix(Matrix matrix1, Matrix matrix2) {
         if (matrix1.getCol()!=matrix2.getRow()) {
             System.out.println("Col1 != Row2");
