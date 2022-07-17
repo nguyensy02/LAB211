@@ -5,9 +5,8 @@
  */
 package main;
 
-import java.util.Scanner;
+import entity.Matrix;
 import logic.Calculator;
-import logic.Matrix;
 import validate.Validation;
 
 /**
@@ -17,51 +16,34 @@ import validate.Validation;
 public class Main {
 
     public static void main(String[] args) {
-        String messageErrorOutOfRange = "Number is out of range";
-        String messageErrorInvalidNumber = "Number is invalid";
-        Calculator calculator = new Calculator();
-        int row1, col1, col2, choice;
-        Matrix matrixOne = new Matrix();
-        Matrix matrixTwo = new Matrix();
-        Matrix ansMatrix;
-        while (true) {
-            choice = Validation.getInt("Enter your choice",
+        String messageErrorOutOfRange = "Must be positive number";
+        String messageErrorInvalidNumber = "Invalid number";
+        int flag = 1;
+        while (flag == 1) {
+            int choice = Validation.getInt("Enter your choice: ",
                     messageErrorOutOfRange,
                     messageErrorInvalidNumber, 1, 4);
-            row1 = Validation.getInt("Enter row of matrix 1: ",
-                    messageErrorOutOfRange,
-                    messageErrorInvalidNumber, 1, Integer.MAX_VALUE);
-            col1 = Validation.getInt("Enter col of matrix 1: ",
-                    messageErrorOutOfRange,
-                    messageErrorInvalidNumber, 1, Integer.MAX_VALUE);
-            matrixOne.input(row1, col1);
+            int [][] matrix1 = Matrix.input();
+            int [][] matrix2 = Matrix.input();
+            int[][] ansMatrix;
             switch (choice) {
                 case 1:
-                    System.out.println("Auto get size for matrix 2");
-                    matrixTwo.input(row1, col1);
-                    ansMatrix = calculator.addMatrix(matrixOne, matrixTwo);
-                    ansMatrix.display();
+                    ansMatrix = Calculator.additionMatrix(matrix1, matrix2);
+                    Matrix.display(ansMatrix);
                     break;
                 case 2:
-                    System.out.println("Auto get size for matrix 2");
-                    matrixTwo.input(row1, col1);
-                    ansMatrix = calculator.subMatrix(matrixOne, matrixTwo);
-                    ansMatrix.display();
+                    ansMatrix = Calculator.subtractionMatrix(matrix1, matrix2);
+                    Matrix.display(ansMatrix);
                     break;
                 case 3:
-                    System.out.println("Auto set row for matrix 2 = col matrix 1");
-                    System.out.println("Enter col for matrix 2");
-                    col2 = Validation.getInt("Enter col of matrix 2: ",
-                            messageErrorOutOfRange,
-                            messageErrorInvalidNumber, 1, Integer.MAX_VALUE);
-                    matrixTwo.input(col1, col2);
-                    ansMatrix = calculator.multiMatrix(matrixOne, matrixTwo);
-                    ansMatrix.display();
+                    ansMatrix = Calculator.multiplicationMatrix(matrix1, matrix2);
+                    Matrix.display(ansMatrix);
                     break;
                 case 4:
-                    return;
+                    flag = 0;
+                    break;
             }
+            
         }
     }
-
 }
