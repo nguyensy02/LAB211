@@ -30,7 +30,7 @@ public class Validation {
             int min, int max) {
         do {
             try {
-                System.out.println(messageInfo);
+                System.out.print(messageInfo);
                 int number = Integer.parseInt(SCANNER.nextLine());
                 if (number >= min && number <=max) {
                     return number;
@@ -38,31 +38,6 @@ public class Validation {
                 System.out.println(messageErrorOutOfRange);
             } catch (NumberFormatException e) {
                 System.out.println(messageErrorInvalidNumber);
-            }
-        } while (true);
-    }
-    
-    /**
-     * Get a string with provided form
-     * 
-     * @param messageInfo               is message info of String want to input
-     * @param messageErrorInvalidString is error if input is invalid String
-     * @param REGEX                     is String to valid input
-     * @return a String with exact form
-     */
-    public static String getString(String messageInfo,
-            String messageErrorInvalidString,
-            final String REGEX) {
-        do {
-            try {
-                System.out.println(messageInfo);
-                String inputString = SCANNER.nextLine().trim();
-                if (inputString.matches(REGEX)){
-                    return inputString;
-                }
-                System.out.println(messageErrorInvalidString);
-            } catch (Exception e) {
-                System.out.println(messageErrorInvalidString);
             }
         } while (true);
     }

@@ -12,74 +12,69 @@ package logic;
 public class Calculator {
 
     /**
-     * Addition matrixOne and matrixTwo
-     * 
-     * @param matrixOne is first matrix
-     * @param matrixTwo is second matrix
-     * @return answer matrix
+     * Addition two matrix
+     *
+     * @param matrix1 is first matrix
+     * @param matrix2 is second matrix
+     * @return result matrix
      */
-    public Matrix addMatrix(Matrix matrixOne, Matrix matrixTwo) {
-        System.out.println("-------------------------------------------------");
-        if (matrixOne.getRow() != matrixTwo.getRow()
-                || matrixOne.getCol() != matrixTwo.getCol()) {
-            System.out.println("Size of matrix is not valid");
+    public static int[][] additionMatrix(int[][] matrix1, int[][] matrix2) {
+        if (matrix1.length != matrix2.length
+                || matrix1[0].length != matrix2[0].length) {
+            System.out.println("Invalid size!");
             return null;
         }
-        Matrix ansMatrix = new Matrix(matrixOne.getRow(), matrixOne.getCol());
-        for (int i = 0; i < matrixOne.getRow(); i++) {
-            for (int j = 0; j < matrixOne.getCol(); j++) {
-                int value = matrixOne.getEntry(i, j) + matrixTwo.getEntry(i, j);
-                ansMatrix.setEntry(i, j, value);
+        int[][] ansMatrix = new int[matrix1.length][matrix1[0].length];
+        for (int i = 0; i < matrix1.length; i++) {
+            for (int j = 0; j < matrix1[0].length; j++) {
+                ansMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
             }
         }
         return ansMatrix;
     }
 
     /**
-     * Subtraction matrixOne to matrixTwo
-     * 
-     * @param matrixOne is first matrix
-     * @param matrixTwo is second matrix
-     * @return answer matrix
+     * Subtraction two matrix
+     *
+     * @param matrix1 is first matrix
+     * @param matrix2 is second matrix
+     * @return result matrix
      */
-    public Matrix subMatrix(Matrix matrixOne, Matrix matrixTwo) {
-        System.out.println("-------------------------------------------------");
-        if (matrixOne.getRow() != matrixTwo.getRow()
-                || matrixOne.getCol() != matrixTwo.getCol()) {
-            System.out.println("Size of matrix is not valid");
+    public static int[][] subtractionMatrix(int[][] matrix1, int[][] matrix2) {
+        if (matrix1.length != matrix2.length
+                || matrix1[0].length != matrix2[0].length) {
+            System.out.println("Invalid size!");
             return null;
         }
-        Matrix ansMatrix = new Matrix(matrixOne.getRow(), matrixOne.getCol());
-        for (int i = 0; i < matrixOne.getRow(); i++) {
-            for (int j = 0; j < matrixOne.getCol(); j++) {
-                int value = matrixOne.getEntry(i, j) - matrixTwo.getEntry(i, j);
-                ansMatrix.setEntry(i, j, value);
+        int[][] ansMatrix = new int[matrix1.length][matrix1[0].length];
+        for (int i = 0; i < matrix1.length; i++) {
+            for (int j = 0; j < matrix1[0].length; j++) {
+                ansMatrix[i][j] = matrix1[i][j] - matrix2[i][j];
             }
         }
         return ansMatrix;
     }
 
     /**
-     * Multiple matrixOne to matrixTwo
-     * 
-     * @param matrixOne is first matrix
-     * @param matrixTwo is second matrix
-     * @return answer matrix
+     * Multiplication two matrix
+     *
+     * @param matrix1 is first matrix
+     * @param matrix2 is second matrix
+     * @return result matrix
      */
-    public Matrix multiMatrix(Matrix matrixOne, Matrix matrixTwo) {
-        System.out.println("-------------------------------------------------");
-        if (matrixOne.getCol()!=matrixTwo.getRow()) {
-            System.out.println("Col1 != Row2");
+    public static int[][] multiplicationMatrix(int[][] matrix1, int[][] matrix2) {
+        if (matrix1[0].length != matrix2.length) {
+            System.out.println("Invalide size!");
             return null;
         }
-        Matrix ansMatrix = new Matrix(matrixOne.getRow(), matrixTwo.getCol());
-        for (int i = 0; i < matrixOne.getRow(); i++) {
-            for (int j = 0; j < matrixTwo.getCol(); j++) {
+        int[][] ansMatrix = new int[matrix1.length][matrix2[0].length];
+        for (int i = 0; i < matrix1.length; i++) {
+            for (int j = 0; j < matrix2[0].length; j++) {
                 int temp = 0;
-                for (int k = 0; k < matrixOne.getCol(); k++) {
-                    temp += matrixOne.getEntry(i, k)* matrixTwo.getEntry(k, j);
+                for (int k = 0; k < matrix1[0].length; k++) {
+                    temp += matrix1[i][k] * matrix2[k][j];
                 }
-                ansMatrix.setEntry(i, j, temp);
+                ansMatrix[i][j] = temp;
             }
         }
         return ansMatrix;
