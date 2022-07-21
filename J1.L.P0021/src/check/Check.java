@@ -23,7 +23,10 @@ public class Check {
      */
     public static boolean checkDuplicateEntry(ArrayList<Student> listStudent, Student student) {
         for (int i = 0; i<listStudent.size(); i++) {
-            if (listStudent.get(i).equals(student)) {
+            if (listStudent.get(i).getId().equals(student.getId())
+                    &&listStudent.get(i).getName().equals(student.getName())
+                    &&listStudent.get(i).getCourse().equals(student.getCourse())
+                    &&listStudent.get(i).getSemester().equals(student.getSemester())) {
                 return true;
             }
         }
